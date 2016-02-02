@@ -1,0 +1,12 @@
+PBI’s for Character Identifier 
+
+
+As a user, I need somewhere to paste a character, or else I could not see the output. 
+
+As a user, I need to the view the character in large type, to see if I copied the right character.
+
+As a user, I need to view how to code the character in Java, so I can program it in Java
+
+As a user, I need to view the hex and unicode numbers for the character, so I can program it in HTML?
+
+As a user, I need to view the text description of a character, so I know what it is. 
