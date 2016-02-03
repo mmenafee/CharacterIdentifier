@@ -10,3 +10,21 @@ As a user, I need to view how to code the character in Java, so I can program it
 As a user, I need to view the hex and unicode numbers for the character, so I can program it in HTML?
 
 As a user, I need to view the text description of a character, so I know what it is. 
+
+
+Miles-PseudoCode
+
+get jframe
+
+add arrays of characters from Entities package and Unicode consortium
+
+add arrays of all alpha, hex and unicode numbers
+
+jlist has all of the characters, and have the input automatically find it
+
+selection listener added in for jlist, sets alpha and hex variables to numbers for exact character
+
+method for displaying character largely, and showing all the values, and the description
+
+
+
