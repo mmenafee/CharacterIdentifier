@@ -1,0 +1,12 @@
+Make user input box
+Utilize Entities and Unicode consortium:
+
+Make pop up menu that displays: (make individual lines or columns for each)
+Large font
+Hex and Decimal Unicode Number 
+Alpha, hex and decimal entities
+Code
+Character looks like in hex when encoded in UTF-8
+The characters in word
+
+
