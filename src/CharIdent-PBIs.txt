@@ -41,6 +41,16 @@ method for displaying character largely, and showing all the values, and the des
 
 Pseudocode for csv file import
 
+Task:
+
+Read and print csv file
+
+Import Hexadecimal (done)
+
+Scan csv file with hexadecimal 
+
+Display unicode, utf-8 and desciprtion from csv file 
+
 main class
 	
 	method for printing lines
