@@ -1,0 +1,97 @@
+//From http://stackoverflow.com/questions/10059638/using-a-text-field-and-a-button-to-initialize-a-variable
+//Help with Mathieu
+import java.applet.Applet;
+import java.awt.*; 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.border.Border;
+
+
+public class IdentifyCharacter extends Applet implements ActionListener {
+
+    JFrame frame = new JFrame("Character Identifier");
+    JTextArea textArea1 = new JTextArea("Unicode: ", 10, 25);
+    JTextArea textArea2 = new JTextArea("Hex Decimal: ", 10, 25);
+    JTextArea textArea3 = new JTextArea("Large Font: ", 10, 25);
+    JTextField textfield1 = new JTextField(15); 
+    //Jbutton button1 = new Jbutton();
+    FlowLayout flow = new FlowLayout();
+    
+    public IdentifyCharacter() { 
+          frame.setVisible(true);
+          frame.setSize(800,800);
+          frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+          Border border = BorderFactory.createLineBorder(Color.BLACK);
+
+        
+          
+          textArea1.setSize(25, 25);
+          textArea1.setBorder(border);
+          textArea1.setEditable(false);
+          textArea1.setFont(new Font("Verdana", Font.BOLD, 12));
+          textArea1.setLocation(200,25); 
+         
+          textArea2.setSize(25, 25);
+          textArea2.setBorder(border);
+          textArea2.setEditable(false);
+          textArea2.setFont(new Font("Verdana", Font.BOLD, 12));
+          textArea2.setLocation(200,25); 
+          
+
+          textArea3.setSize(25, 25);
+          textArea3.setBorder(border);
+          textArea3.setEditable(false);
+          textArea3.setFont(new Font("Verdana", Font.BOLD, 12));
+          textArea3.setLocation(200,25); 
+          
+          
+          textfield1.setSize(25, 25);
+          textfield1.setBorder(border);
+          textfield1.setEditable(false);
+          textfield1.setFont(new Font("Verdana", Font.BOLD, 12));
+          textfield1.setLocation(200,25); 
+          
+          frame.setLayout(new FlowLayout());
+    
+          
+          
+          JPanel a = new JPanel();
+          JPanel b = new JPanel();
+          
+          a.setSize(400,800);
+          a.setBorder(border);
+          a.setLayout(new FlowLayout());
+          
+          b.setBorder(border);
+          b.setLocation(400,600);
+              
+          
+          a.add(textArea1);
+          a.add(textArea2);
+          a.add(textArea3);
+          b.add(textfield1);
+          
+          frame.add(a);
+          frame.add(b);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+    
+
+}
