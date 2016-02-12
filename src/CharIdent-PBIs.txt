@@ -2,16 +2,26 @@ PBI’s for Character Identifier
 Help from Drew and Will's group
 
 As a user, I need somewhere to paste a character, so I can know how to code it in various programs.
+  Tasks
+    create jtextarea or jtextfield
+    
 
 As a user, I need to the view the character in large type, so I can know what the character specifically is. 
+  Tasks 
+    add change listener and another jtextarea so larger character shows in jtextarea
+  
 
 As a user, I need to view the java code for the character, so I can program it in Java.
+  Tasks
+    add java code array and ?
 
 As a user, I need to view the entities, so I can generate the characters in different programs. 
 
 As a user, I need to view the hex and decimal unicode number for the character, so I can represent the character in any programming language. 
 
 As a user, I need to view the text description of a character, so I know what it is. 
+  Tasks
+    find a way to utilize entitites.csv
 
 As a user, I need to view the UTF-8 code, so I can present the character, lightly and efficently, in a program that allows certain characters. 
 
@@ -28,6 +38,19 @@ jlist has all of the characters, and have the input automatically find it
 selection listener added in for jlist, sets alpha and hex variables to numbers for exact character
 
 method for displaying character largely, and showing all the values, and the description
+
+Pseudocode for csv file import
+
+main class
+	
+	method for printing lines
+		import file statement, set file to variable
+		separate every line and comma from code
+		for loop(i=0
+		
+
+	main method
+		call print line method
 
 
 
