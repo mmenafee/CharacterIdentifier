@@ -1,0 +1,27 @@
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.Scanner;
+
+public class identiferhex {
+  public static void main(String[] args) throws Exception {
+    BufferedReader br = new BufferedReader(new FileReader("entityfacts.csv"));
+    String line = null;
+
+    while ((line = br.readLine()) != null) {
+      System.out.println(line);
+      String[] values = line.split(",");
+      for (String str : values) {    
+      }
+    }
+    Scanner user_input = new Scanner (System.in);
+	String character;
+	character = user_input.next();
+	System.out.println(character);
+	int characterhex = character.charAt(0);
+	Integer.toHexString(characterhex);
+	System.out.println(characterhex);
+    br.close();
+  }
+  
+}
