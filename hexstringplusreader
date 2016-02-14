@@ -21,6 +21,7 @@ public class identiferhex {
 	int characterhex = character.charAt(0);
 	Integer.toHexString(characterhex);
 	System.out.println(characterhex);
+	System.out.println(Integer.toHexString(characterhex));
     br.close();
   }
   
