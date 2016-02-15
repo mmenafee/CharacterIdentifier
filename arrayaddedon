@@ -17,28 +17,37 @@ public class identiferhex {
 	System.out.println(character);
 	int characterhex = character.charAt(0);
 	Integer.toHexString(characterhex);
-	String characterhexadecimal = Integer.toHexString(characterhex);
-	int number = Integer.parseInt(characterhexadecimal);
+	String hexadec = Integer.toHexString(characterhex);
+	//int number = Integer.parseInt(characterhexadecimal);
 	System.out.println(characterhex);
-	System.out.println(number);
+	System.out.println(hexadec);
 	
     while ((line = br.readLine()) != null) {
       // System.out.println(line);
       String[] values = line.split(",");
     
-      if (values.length == 1 && values.length==2);
-      	
-      else
-    	  if (number == values[1]){
-        	 System.out.println(values[4]);
+      if (values.length > 2){
+    	  System.out.println(values[1]);
+      	if(hexadec == values[1])
+      	{
+      		System.out.println("Found character");
+        	 System.out.println(values[5]);
     	  }
     
-      System.out.println(values.length);
+      }
       
-      //System.out.println(values[1]);
+    
       
-      //if (number == values[1]){
-    	  //System.out.println(values[4]);
-      //}
-    		  
-      
+
+ 
+
+	
+	
+   
+  }
+    br.close();
+    
+  }
+ 
+  }
+  
