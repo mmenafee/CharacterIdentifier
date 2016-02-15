@@ -26,7 +26,10 @@ public class Sam extends Applet {
     JTextArea bigtext = new JTextArea("Your Character:", 7,14);
     static JTextField textArea1 = new JTextField("Unicode: ", 25);
     static JTextField textArea2 = new JTextField("Hexadecimal: ", 25);
-    JTextField textArea3 = new JTextField("UTF-8: ", 25);
+    static JTextField textArea3 = new JTextField("UTF-8: ", 25);
+    static JTextField aentities = new JTextField("Alpha Entity",25);
+    static JTextField hentities = new JTextField("Hex Entity",25);
+    static JTextField dentities = new JTextField("Decimal Entity",25);
     static JTextField textfield1 = new JTextField(20); 
     JLabel label = new JLabel("Copy Your Character Here");
     JButton b1 = new JButton("Enter");
@@ -34,12 +37,11 @@ public class Sam extends Applet {
     
     FlowLayout flow = new FlowLayout();
     
-    
-    
     public Sam() { 
           frame.setVisible(true);
-          frame.setSize(1200,250);
+          frame.setSize(1200,700);
           frame.setLocation(100,200);
+          frame.setResizable(false);
           frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
           frame.setLayout(new FlowLayout());
     
@@ -61,7 +63,7 @@ public class Sam extends Applet {
           textArea2.setBorder(border);
           textArea2.setEditable(false);
           textArea2.setFont(new Font("Verdana", Font.BOLD, 12));
-          textArea2.setLocation(400,0); 
+          textArea2.setLocation(200,25); 
           
 
           textArea3.setSize(25, 25);
@@ -70,40 +72,78 @@ public class Sam extends Applet {
           textArea3.setFont(new Font("Verdana", Font.BOLD, 12));
           textArea3.setLocation(200,25); 
           
-          
+  
           textfield1.setSize(25, 25);
           textfield1.setBorder(border);
           textfield1.setFont(new Font("Verdana", Font.BOLD, 12));
           textfield1.setLocation(200,25); 
           
+          aentities.setSize(25, 25);
+          aentities.setBorder(border);
+          aentities.setFont(new Font("Verdana", Font.BOLD, 12));
+          aentities.setLocation(200,25); 
+          
+          hentities.setSize(25, 25);
+          hentities.setBorder(border);
+          hentities.setFont(new Font("Verdana", Font.BOLD, 12));
+          hentities.setLocation(200,25); 
+          
+          dentities.setSize(25, 25);
+          dentities.setBorder(border);
+          dentities.setFont(new Font("Verdana", Font.BOLD, 12));
+          dentities.setLocation(200,25); 
           
           JPanel a = new JPanel();
           JPanel b = new JPanel();
           JPanel c = new JPanel();
+          JPanel d = new JPanel();
+       
           
-          a.setSize(400,800);
           a.setBorder(border);
           a.setLayout(new FlowLayout());
           
           b.setBorder(border);
-          b.setLocation(400,600);
+          b.setLayout(new FlowLayout());
           
+          c.setBorder(border);
+          c.setLayout(new FlowLayout());
+          
+          d.setBorder(border);
+          d.setLayout(new FlowLayout());
+          
+          
+          a.add(scroll);
+          c.add(textArea1);
+          c.add(textArea2);
+          c.add(textArea3);
           b.add(label);
           b.add(textfield1);
           b.add(b1);
-          a.add(scroll);
-          a.add(textArea1);
-          a.add(textArea2);
-          a.add(textArea3);
+          d.add(aentities);
+          d.add(hentities);
+          d.add(dentities);
+          
           
           
           frame.add(b);
           frame.add(a);
+          frame.add(c);
+          frame.add(d);
           
-          b1.addActionListener(new ButtonListener());
+         b1.addActionListener(new ButtonListener());
     }
-    
-    class ButtonListener implements ActionListener{
+    public static void uniform(JTextField textArea1){
+    	Border border = BorderFactory.createLineBorder(Color.BLACK);
+    	
+    	   textArea1.setSize(25, 25);
+           textArea1.setBorder(border);
+           textArea1.setEditable(false);
+           textArea1.setFont(new Font("Verdana", Font.BOLD, 12));
+           textArea1.setLocation(200,25); 
+          
+    }
+   
+class ButtonListener implements ActionListener{
     	 ButtonListener() {
     	  }
 
@@ -122,24 +162,12 @@ public class Sam extends Applet {
     	    }
     	    
     }
-    
+            
 	public static void main (String[] args) throws Exception {
+		uniform(textArea2);
 		
-		Scanner scan = null;
-		try {
-			scan = new Scanner(new File("entityfacts.csv"));
-			
-		} catch (IOException e){
-			System.out.println("Could not load file");
-		}
-		//Scanner scan = new Scanner(new File("entityfacts.csv"));
-		while (scan.hasNext()){
-			System.out.println(scan.nextLine());
-		}	
-		
-		Scanner user_input = new Scanner (System.in);
-
-	
+		unicode object = new unicode();
+		object.fetch();
 
 	}
 	
