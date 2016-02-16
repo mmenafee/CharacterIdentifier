@@ -149,54 +149,34 @@ public class Sam extends Applet {
           frame.add(d);
           frame.add(e);
           
-          
+        b1.addActionListener(new ButtonListener());
     }
     
+    class ButtonListener implements ActionListener{
 
-     	            
-	public static void main (String[] args) throws Exception {
-		 
-		b1.addActionListener(new ActionListener(){
-	    	  public void actionPerformed(ActionEvent e) {
-	    	        // TODO Auto-generated method stub
-	    		
-	    			
-	    				String character = textfield1.getText();
-		    			unicode object = new unicode();
-		    			
-						String hexadec = null;
-						try
-						{
-							hexadec = object.fetch(character);
-						}
-						catch (Exception e1)
-						{
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						bigtext.setText(textfield1.getText());
-			    	    bigtext.setFont(new Font("Verdana", Font.BOLD, 30));
-			    	        
-		    			int unicode = character.charAt(0);
-		    			String hex = Integer.toHexString(unicode);
-		    			textArea1.setText("Decimal: "+String.valueOf(unicode));
-		    			textArea2.setText(hexadec);
-					}
-					
-	    			
-	    	     
-	    	    
-	    	
-	
-	    	  
+		@Override
+		public void actionPerformed(ActionEvent e)
+		{
+			// TODO Auto-generated method stub
+			try
+			{
+				unicode.fetch();
+			}
+			catch (Exception e1)
+			{
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+    	
+    }
+    
+  
+   
+	public static void main (String[] args) {
 		
-	});
+		
+
 	}
+	
 }
-		
-		
-	
-
-	
-	
-
