@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 import java.applet.Applet;
@@ -19,27 +21,29 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
-
 public class Sam extends Applet {
 
     JFrame frame = new JFrame("Character Identifier");
-    JTextArea bigtext = new JTextArea("Your Character:", 7,14);
-    static JTextField textArea1 = new JTextField("Unicode: ", 25);
-    static JTextField textArea2 = new JTextField("Hexadecimal: ", 25);
+    static JTextArea bigtext = new JTextArea("Your Character:", 7,14);
+    static JTextField textArea1 = new JTextField("Decimal: ", 25);
+    static JTextField textArea2 = new JTextField("Hex: ", 25);
     static JTextField textArea3 = new JTextField("UTF-8: ", 25);
     static JTextField aentities = new JTextField("Alpha Entity",25);
     static JTextField hentities = new JTextField("Hex Entity",25);
     static JTextField dentities = new JTextField("Decimal Entity",25);
     static JTextField textfield1 = new JTextField(20); 
+    static JTextField descrip = new JTextField("Character Description:",25);
+    static JTextField javac = new JTextField("Java Code:",25);
+    
     JLabel label = new JLabel("Copy Your Character Here");
-    JButton b1 = new JButton("Enter");
+    static JButton b1 = new JButton("Enter");
     JScrollPane scroll = new JScrollPane(bigtext); //place the JTextArea in a scroll pane
     
     FlowLayout flow = new FlowLayout();
     
     public Sam() { 
           frame.setVisible(true);
-          frame.setSize(1200,700);
+          frame.setSize(1200,400);
           frame.setLocation(100,200);
           frame.setResizable(false);
           frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -71,8 +75,8 @@ public class Sam extends Applet {
           textArea3.setEditable(false);
           textArea3.setFont(new Font("Verdana", Font.BOLD, 12));
           textArea3.setLocation(200,25); 
-          
-  
+
+      
           textfield1.setSize(25, 25);
           textfield1.setBorder(border);
           textfield1.setFont(new Font("Verdana", Font.BOLD, 12));
@@ -93,10 +97,21 @@ public class Sam extends Applet {
           dentities.setFont(new Font("Verdana", Font.BOLD, 12));
           dentities.setLocation(200,25); 
           
+          descrip.setSize(25, 25);
+          descrip.setBorder(border);
+          descrip.setFont(new Font("Verdana", Font.BOLD, 12));
+          descrip.setLocation(200,25); 
+          
+          javac.setSize(25, 25);
+          javac.setBorder(border);
+          javac.setFont(new Font("Verdana", Font.BOLD, 12));
+          javac.setLocation(200,25); 
+          
           JPanel a = new JPanel();
           JPanel b = new JPanel();
           JPanel c = new JPanel();
           JPanel d = new JPanel();
+          JPanel e = new JPanel();
        
           
           a.setBorder(border);
@@ -111,64 +126,77 @@ public class Sam extends Applet {
           d.setBorder(border);
           d.setLayout(new FlowLayout());
           
+          e.setBorder(border);
+          e.setLayout(new FlowLayout());
           
           a.add(scroll);
+          c.add(descrip);
           c.add(textArea1);
           c.add(textArea2);
-          c.add(textArea3);
           b.add(label);
           b.add(textfield1);
           b.add(b1);
           d.add(aentities);
           d.add(hentities);
           d.add(dentities);
+          e.add(javac);
+          e.add(textArea3);
           
-          
-          
+        
           frame.add(b);
           frame.add(a);
           frame.add(c);
           frame.add(d);
+          frame.add(e);
           
-         b1.addActionListener(new ButtonListener());
-    }
-    public static void uniform(JTextField textArea1){
-    	Border border = BorderFactory.createLineBorder(Color.BLACK);
-    	
-    	   textArea1.setSize(25, 25);
-           textArea1.setBorder(border);
-           textArea1.setEditable(false);
-           textArea1.setFont(new Font("Verdana", Font.BOLD, 12));
-           textArea1.setLocation(200,25); 
           
     }
-   
-class ButtonListener implements ActionListener{
-    	 ButtonListener() {
-    	  }
+    
 
-    	@Override
-    	  public void actionPerformed(ActionEvent e) {
-    	        // TODO Auto-generated method stub
-    			String character = textfield1.getText();
-    		
-    	        bigtext.setText(textfield1.getText());
-    	        bigtext.setFont(new Font("Verdana", Font.BOLD, 30));
-    	        
-    			int unicode = character.charAt(0);
-    			String hex = Integer.toHexString(unicode);
-    			textArea1.setText("Unicode:"+String.valueOf(unicode));
-    			textArea2.setText("Hexacademical:"+hex);
-    	    }
-    	    
-    }
-            
+     	            
 	public static void main (String[] args) throws Exception {
-		uniform(textArea2);
-		
-		unicode object = new unicode();
-		object.fetch();
-
-	}
+		 
+		b1.addActionListener(new ActionListener(){
+	    	  public void actionPerformed(ActionEvent e) {
+	    	        // TODO Auto-generated method stub
+	    		
+	    			
+	    				String character = textfield1.getText();
+		    			unicode object = new unicode();
+		    			
+						String hexadec = null;
+						try
+						{
+							hexadec = object.fetch(character);
+						}
+						catch (Exception e1)
+						{
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+						bigtext.setText(textfield1.getText());
+			    	    bigtext.setFont(new Font("Verdana", Font.BOLD, 30));
+			    	        
+		    			int unicode = character.charAt(0);
+		    			String hex = Integer.toHexString(unicode);
+		    			textArea1.setText("Decimal: "+String.valueOf(unicode));
+		    			textArea2.setText(hexadec);
+					}
+					
+	    			
+	    	     
+	    	    
+	    	
 	
+	    	  
+		
+	});
+	}
 }
+		
+		
+	
+
+	
+	
+
