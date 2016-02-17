@@ -32,7 +32,7 @@ public class Sam extends Applet {
     static JTextField hentities = new JTextField("Hex Entity",25);
     static JTextField dentities = new JTextField("Decimal Entity",25);
     static JTextField textfield1 = new JTextField(20); 
-    static JTextField descrip = new JTextField("Character Description:",25);
+    static JTextField descrip = new JTextField("Character Description:",35);
     static JTextField javac = new JTextField("Java Code:",25);
     
     JLabel label = new JLabel("Copy Your Character Here");
