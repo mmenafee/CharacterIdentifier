@@ -1,3 +1,9 @@
+//http://illegalargumentexception.blogspot.com/2009/05/java-rough-guide-to-character-encoding.html#javaencoding_encodings
+//Markus Feng
+//Phillip Chung
+//Michael Meng
+//Ryan Kola
+//Kofi Adu
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -33,7 +39,8 @@ public class Sam extends Applet {
     static JTextField dentities = new JTextField("Decimal Entity",25);
     static JTextField textfield1 = new JTextField(20); 
     static JTextField descrip = new JTextField("Character Description:",35);
-    static JTextField javac = new JTextField("Java Code:",25);
+    static JTextField javac = new JTextField("Java Char Literal:",25);
+    static Border border = BorderFactory.createLineBorder(Color.BLACK);
     
     JLabel label = new JLabel("Copy Your Character Here");
     static JButton b1 = new JButton("Enter");
@@ -41,6 +48,7 @@ public class Sam extends Applet {
     
     FlowLayout flow = new FlowLayout();
     
+    //constructor
     public Sam() { 
           frame.setVisible(true);
           frame.setSize(1200,400);
@@ -48,64 +56,23 @@ public class Sam extends Applet {
           frame.setResizable(false);
           frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
           frame.setLayout(new FlowLayout());
-    
-          Border border = BorderFactory.createLineBorder(Color.BLACK);
           
           label.setFont(new Font("Verdana", Font.BOLD, 12));
           
           bigtext.setLineWrap(true);
           bigtext.setFont(new Font("Verdana", Font.BOLD, 12));
           bigtext.setEditable(false);
-          
-          textArea1.setSize(25, 25);
-          textArea1.setBorder(border);
-          textArea1.setEditable(false);
-          textArea1.setFont(new Font("Verdana", Font.BOLD, 12));
-          textArea1.setLocation(200,25); 
-         
-          textArea2.setSize(25, 25);
-          textArea2.setBorder(border);
-          textArea2.setEditable(false);
-          textArea2.setFont(new Font("Verdana", Font.BOLD, 12));
-          textArea2.setLocation(200,25); 
-          
-
-          textArea3.setSize(25, 25);
-          textArea3.setBorder(border);
-          textArea3.setEditable(false);
-          textArea3.setFont(new Font("Verdana", Font.BOLD, 12));
-          textArea3.setLocation(200,25); 
-
-      
-          textfield1.setSize(25, 25);
-          textfield1.setBorder(border);
-          textfield1.setFont(new Font("Verdana", Font.BOLD, 12));
-          textfield1.setLocation(200,25); 
-          
-          aentities.setSize(25, 25);
-          aentities.setBorder(border);
-          aentities.setFont(new Font("Verdana", Font.BOLD, 12));
-          aentities.setLocation(200,25); 
-          
-          hentities.setSize(25, 25);
-          hentities.setBorder(border);
-          hentities.setFont(new Font("Verdana", Font.BOLD, 12));
-          hentities.setLocation(200,25); 
-          
-          dentities.setSize(25, 25);
-          dentities.setBorder(border);
-          dentities.setFont(new Font("Verdana", Font.BOLD, 12));
-          dentities.setLocation(200,25); 
-          
-          descrip.setSize(25, 25);
-          descrip.setBorder(border);
-          descrip.setFont(new Font("Verdana", Font.BOLD, 12));
-          descrip.setLocation(200,25); 
-          
-          javac.setSize(25, 25);
-          javac.setBorder(border);
-          javac.setFont(new Font("Verdana", Font.BOLD, 12));
-          javac.setLocation(200,25); 
+                    
+          editField(textArea1);
+          editField(textArea2);
+          editField(textArea3);
+          editField(textfield1);
+          textfield1.setEditable(true);
+          editField(aentities);
+          editField(hentities);
+          editField(dentities);
+          editField(descrip);
+          editField(javac);
           
           JPanel a = new JPanel();
           JPanel b = new JPanel();
@@ -115,19 +82,19 @@ public class Sam extends Applet {
        
           
           a.setBorder(border);
-          a.setLayout(new FlowLayout());
+          a.setLayout(flow);
           
           b.setBorder(border);
-          b.setLayout(new FlowLayout());
+          b.setLayout(flow);
           
           c.setBorder(border);
-          c.setLayout(new FlowLayout());
+          c.setLayout(flow);
           
           d.setBorder(border);
-          d.setLayout(new FlowLayout());
+          d.setLayout(flow);
           
           e.setBorder(border);
-          e.setLayout(new FlowLayout());
+          e.setLayout(flow);
           
           a.add(scroll);
           c.add(descrip);
@@ -151,6 +118,16 @@ public class Sam extends Applet {
           
         b1.addActionListener(new ButtonListener());
     }
+    //method for changing characteristics of jtextfields
+    public void editField(JTextField tf){
+    	
+    	tf.setSize(25, 25);
+        tf.setBorder(border);
+        tf.setFont(new Font("Verdana", Font.BOLD, 12));
+        tf.setLocation(200,25); 
+        tf.setEditable(false);
+        
+    }
     
     class ButtonListener implements ActionListener{
 
@@ -160,7 +137,12 @@ public class Sam extends Applet {
 			// TODO Auto-generated method stub
 			try
 			{
-				unicode.fetch();
+				//because a new one is not always found
+				
+				descrip.setText("Character Description:");
+				aentities.setText("Alpha Entity: ");
+				
+				unicode.fetch(textfield1.getText());
 			}
 			catch (Exception e1)
 			{
@@ -171,12 +153,4 @@ public class Sam extends Applet {
     	
     }
     
-  
-   
-	public static void main (String[] args) {
-		
-		
-
-	}
-	
 }
