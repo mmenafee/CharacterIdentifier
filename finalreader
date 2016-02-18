@@ -16,11 +16,15 @@ public class identiferhex {
 	character = user_input.next();
 	System.out.println(character);
 	int characterhex = character.charAt(0);
-	Integer.toHexString(characterhex);
+	String hexutf8 = Integer.toHexString(characterhex);
 	String hexadec = "0x00" + Integer.toHexString(characterhex);
-	//int number = Integer.parseInt(characterhexadecimal);
-	System.out.println(characterhex);
-	System.out.println(hexadec);
+	System.out.println(hexadec); //hex unicode
+	System.out.println (characterhex); //decimal unicode
+	System.out.println ("&#x00" + hexutf8);// hex entity
+	System.out.println("&#" + characterhex); //decimal entity
+	System.out.println ("\\u00" + hexutf8);//java?
+	System.out.println(hexutf8); //hex utf-8
+
 	
     while ((line = br.readLine()) != null) {
       // System.out.println(line);
@@ -42,3 +46,17 @@ public class identiferhex {
     	  }
       	
       
+    
+      
+
+ 
+
+	
+	
+   
+  }
+    
+  }
+ 
+  }
+  
