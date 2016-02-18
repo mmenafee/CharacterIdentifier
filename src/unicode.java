@@ -24,57 +24,54 @@ import javax.swing.border.Border;
 public class unicode {
     
 	
-	public static void fetch() throws Exception {
+	public static void fetch(String character) throws Exception {
 		
-		
-		
-		 BufferedReader br = new BufferedReader(new FileReader("entityfacts.csv"));
+		 	BufferedReader br = new BufferedReader(new FileReader("entityfacts.csv"));
 		    String line = null;
-	    
-	    Scanner user_input = new Scanner (Sam.textfield1.getText());
-		String character = user_input.next();
-		
-		
-		System.out.println(character);
-		int characterhex = character.charAt(0);
-		Integer.toHexString(characterhex);
-		String hexadec = "0x00" + Integer.toHexString(characterhex);
-		
-		
-		
-		
-	    while ((line = br.readLine()) != null) {
-	      // System.out.println(line);
-	      final String[] values = line.split(",");
-	      
-	    
-	      if (values.length > 2){
-	    	  values[1] = values[1].replaceAll("\\s","");
-	    	  //System.out.println(values[1]);
-	      	if(hexadec.equals(values[1]))
-	      	{
-	      		values[4] = values[4].replaceAll("\\s",""); 
-	      		System.out.println(values[4]);
-	      		Sam.descrip.setText("Character Desciption" + values[4]);
-	      		values[3] = values[3].replaceAll("\\s",""); 
-	      		System.out.println(values[3]);
-	      		Sam.aentities.setText("Alpha Entity:" + values[3]);
-	      		
-	      	}
-	      	
-	      }
-	
+		    
+			int dec = character.charAt(0);
+			String hex = Integer.toHexString(dec);
+			String one = ("000" + hex).substring(hex.length());
+			String hexadec = "0x" + one;
+			String javaen = "\\u" + one;
 			
+			//code for getting utf-8
+			// http://illegalargumentexception.blogspot.com/2009/05/java-rough-guide-to-character-encoding.html#javaencoding_encodings
+			 byte[] encoded = javaen.getBytes("UTF-8");
+		      for (byte b : encoded) {
+		    	  Sam.textArea3.setText("UTF-8:"+ b);
+		      }
+		      
+		    while ((line = br.readLine()) != null) {
+		   
+		      String[] values = line.split(",");
+		      
+		    
+		      if (values.length > 2){
+		    	  values[1] = values[1].replaceAll("\\s","");
+		    	 
+		      	if(hexadec.equals(values[1]))
+		      	{
+		      		
+		      		values[4] = values[4].replaceAll("\\s",""); 
+		      		Sam.descrip.setText("Character Description:" + values[4]);
+		      		
+		      		values[3] = values[3].replaceAll("\\s",""); 
+		      		Sam.aentities.setText("Alpha Entity:&" + values[3]);
+		    	  }
+		    	  }
+	
+				
     			Sam.bigtext.setText(Sam.textfield1.getText());
 	    	    Sam.bigtext.setFont(new Font("Verdana", Font.BOLD, 30));
-	    	        
-    			int unicode = character.charAt(0);
-    			String hex = Integer.toHexString(unicode);
-    			Sam.textArea1.setText("Decimal:" + String.valueOf(unicode));
-    			Sam.textArea2.setText("Hex:" + hexadec);
-    			Sam.dentities.setText("Decimal Entity: &#" +  String.valueOf(unicode));
-    			Sam.hentities.setText("Hex Entity: &#"+ hexadec);
-    			Sam.javac.setText("Java Encoding: "+unicode);
+	    	       	
+    			Sam.textArea1.setText("Decimal: " + String.valueOf(dec));
+    			Sam.textArea2.setText("Hex: " + hexadec);
+    			Sam.dentities.setText("Decimal Entity: &#" + String.valueOf(dec));
+    			Sam.hentities.setText("Hex Entity: &#x" + one);
+    			Sam.javac.setText("Java Char Literal: \\u" + one );
+    			
+    			
     			
    		}
      
